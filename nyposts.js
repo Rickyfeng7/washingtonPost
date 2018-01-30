@@ -14,21 +14,19 @@ function NYPosts (params) {
 		return false;
 	}
 
-	if(typeof params.begin_year !== 'undefined' && parseInt(params.begin_year) < 1900) {
+	if(typeof params.begin_year !== 'undefined' && params.begin_year < 1900) {
 		console.log("Start year is wrong");
 		return false;
-	} else if(typeof params.begin_year !== 'undefined') {
+	} else if(typeof params.begin_year !== 'undefined' && params.begin_year.toString().trim()) {
 		params.begin_date = params.begin_year + "0101";
 	}
 
 	if(typeof params.end_year !== 'undefined' && parseInt(params.end_year) < 1900) {
 		console.log("End year is wrong");
 		return false;
-	} else if (typeof params.end_year !== 'undefined') {
+	} else if (typeof params.end_year !== 'undefined' && params.end_year.toString().trim()) {
 		params.end_date = params.end_year + "0101";
 	}
-
-	console.log(params);
 
 
 	var error_resp = {
