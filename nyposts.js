@@ -17,14 +17,14 @@ function NYPosts (params) {
 	if(typeof params.begin_year !== 'undefined' && parseInt(params.begin_year) < 1900) {
 		console.log("Start year is wrong");
 		return false;
-	} else {
+	} else if(typeof params.begin_year !== 'undefined') {
 		params.begin_date = params.begin_year + "0101";
 	}
 
 	if(typeof params.end_year !== 'undefined' && parseInt(params.end_year) < 1900) {
 		console.log("End year is wrong");
 		return false;
-	} else {
+	} else if (typeof params.end_year !== 'undefined') {
 		params.end_date = params.end_year + "0101";
 	}
 

@@ -3,10 +3,33 @@
 <head>
 	<title></title>
 	 <link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="nyposts.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#main-form').on('submit', function(event){
+				event.preventDefault();
+
+				var q = $('#search-term').val();
+				var end_year = $('#end-year').val();
+				var start_year = $('#start-year').val();
+				NYPosts({
+					q: q,
+					end_year: end_year,
+					start_year: start_year,
+					success: function(resp) {
+						console.log("success", resp);
+					},
+					fail: function(resp) {
+						console.log("fail", resp)
+					}
+				});
+			});
+		});
+	</script>
 </head>
 <body>
 
@@ -23,10 +46,10 @@
 		<br>
 	  <div class="container">
 	  	
-			<form>
+			<form id="main-form">
 			 <div class="form-group">
 			   <label for="exampleInputEmail1">Search Term</label>
-			   <input type="Search Term" class="form-control" id="Search Term" aria-describedby="emailHelp" placeholder="Search Term">
+			   <input type="text" class="form-control" id="search-term" aria-describedby="emailHelp" placeholder="Search Term">
 			 </div>
 			 <div class="form-group">
 					<label for="exampleInputEmail1">Number of Records to Retrieve:</label>
@@ -43,11 +66,11 @@
 			 </div>
 			 	<div class="form-group">
 			   <label for="exampleInputEmail1">Start Year</label>
-			   <input type="Start Year" class="form-control" id="Start Year" aria-describedby="emailHelp" placeholder="Start Year">
+			   <input type="number" min="1900" step="1" class="form-control" id="start-year" aria-describedby="emailHelp" placeholder="Start Year">
 			 </div>
 			 <div class="form-group">
 			   <label for="exampleInputPassword1">End Year</label>
-			   <input type="End Year" class="form-control" id="End Year" placeholder="End Year">
+			   <input type="number" min="1900" step="1" class="form-control" id="end-year" placeholder="End Year">
 			 </div>
 			 <button type="submit" class="btn btn-primary">Submit</button>
 			 <button type="Clear Results" class="btn btn-primary">Clear Results</button>
