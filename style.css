@@ -1,0 +1,32 @@
+#header{
+	background-color: #00008B;
+	color:White;
+	font-weight: bold;
+	text-align: center;
+	font-size: 100px;
+	/*margin-top: 20px;*/
+	padding: 20px;
+	width: 80%;
+	margin-left: 100px;
+
+}
+#jumb{
+	width: 80%;
+	background-color: grey;
+	margin: 100px;
+
+}
+#parameter{
+	background-color: #00008B;
+	color: white;
+	font-size: 24px;
+	padding: 20px;
+	text-align: left;
+  margin-top: -64px;
+  width:100%;
+}
+#btnGroupDrop1{
+	width: 100%;
+	text-align: left;
+	background-color: white;
+}
